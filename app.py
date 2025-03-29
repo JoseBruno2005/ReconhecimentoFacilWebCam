@@ -85,5 +85,18 @@ def produtor():
     webCam.release()
     cv2.destroyAllWindows()
 
+@app.route('/')
+def index():
+    with lock:
+        return render_template('index.html', lista_presenca=lista_presenca)
+
+@app.route('/presenca', methods=['GET'])
+def get_presenca():
+    with lock:
+        return jsonify(list(lista_presenca))
+
+thread_produtor = threading.Thread(target=produtor, daemon=True)
+thread_produtor.start()
+
 app.run(debug=True, use_reloader=False)
 
