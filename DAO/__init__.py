@@ -1,7 +1,6 @@
 import psycopg2
 
 def conexaodb():
-    """Estabelece conexão com o banco de dados e retorna a conexão"""
     return psycopg2.connect(
         dbname="reconhecimentoFacial",
         user="postgres",
@@ -10,10 +9,7 @@ def conexaodb():
         port="5432"
     )
 
-
-# Função para salvar uma pessoa e sua imagem no banco
 def salvar_pessoa(nome, image_path):
-    """Salva uma pessoa no banco com a imagem convertida para BYTEA."""
     try:
         conn = conexaodb()
         cursor = conn.cursor()
@@ -33,9 +29,7 @@ def salvar_pessoa(nome, image_path):
         print(f"Erro ao salvar pessoa: {e}")
         return None
 
-
 def buscar_todas_pessoas():
-    """Retorna todas as pessoas e suas imagens em bytes."""
     try:
         conn = conexaodb()
         cursor = conn.cursor()
@@ -45,7 +39,6 @@ def buscar_todas_pessoas():
         cursor.close()
         conn.close()
 
-        # Convertendo memoryview para bytes
         return [(id, nome, bytes(imagem)) for id, nome, imagem in pessoas]
     except Exception as e:
         print(f"Erro ao buscar pessoas: {e}")
