@@ -38,7 +38,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const listaPresenca = document.getElementById('presenca-list');
-                    listaPresenca.innerHTML = '';  // Limpa a lista atual
+                    listaPresenca.innerHTML = '';
                     data.forEach(nome => {
                         const listItem = document.createElement('li');
                         listItem.textContent = nome;
@@ -46,7 +46,7 @@
                     });
                 })
                 .catch(error => console.error('Erro ao carregar lista de presença:', error));
-        }, 1000);  // Atualiza a lista a cada 1 segundo
+        }, 1000);
     </script>
 </body>
 
