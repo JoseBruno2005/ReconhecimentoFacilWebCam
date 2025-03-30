@@ -3,7 +3,11 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (reconhecimentoFacialWebCam)" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 (PyCharmMiscProject)" project-jdk-type="Python SDK" />
+>>>>>>> de9461381955e508ef52b5fcd0f848b4353df486
   <component name="PyCharmProfessionalAdvertiser">
     <option name="shown" value="true" />
   </component>

@@ -4,6 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Presença</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            background-color: #f4f4f4;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
+
+<body>
+    <h1>Lista de Presença</h1>
+    <ul id="presenca-list">
+        {% for nome in lista_presenca %}
+            <li>{{ nome }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        setInterval(() => {
+            fetch('/presenca')
+                .then(response => response.json())
+                .then(data => {
+                    const listaPresenca = document.getElementById('presenca-list');
+                    listaPresenca.innerHTML = '';  // Limpa a lista atual
+                    data.forEach(nome => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = nome;
+                        listaPresenca.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar lista de presença:', error));
+        }, 1000);  // Atualiza a lista a cada 1 segundo
+    </script>
+</body>
 
 </html>
